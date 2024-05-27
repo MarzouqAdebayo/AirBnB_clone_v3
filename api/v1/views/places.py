@@ -5,12 +5,12 @@ from models.place import Place
 from models.city import City
 from models.user import User
 from api.v1.views import app_views
-from flask import jsonify, request, make_response, abort
+from flask import jsonify, request, abort
 
 
-@app_views.route('/api/v1/cities/<city_id>/places', methods=['GET'],
+@app_views.route('/cities/<city_id>/places', methods=['GET'],
                  strict_slashes=False)
-def get_places(city_id = None):
+def get_places(city_id=None):
     """
     Return place objects that belong to city with id city_id
     """
