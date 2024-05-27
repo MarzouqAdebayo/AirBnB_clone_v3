@@ -5,6 +5,7 @@ Module "cities.py" - Defines all views for cities
 from api.v1.views import app_views
 from flask import jsonify, abort, make_response, request
 from models.city import City
+from models.State import State
 from models import storage
 
 
