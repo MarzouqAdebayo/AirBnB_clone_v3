@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Controller that returns the status of the application"""
 from flask import jsonify
-import models
+from models import storage
 from api.v1.views import app_views
 from models.amenity import Amenity
 from models.city import City
@@ -19,16 +19,16 @@ def status():
     return jsonify({"status": "OK"})
 
 
-@app_views.route("/stats", strict_slashes=False)
+@app_views.route("/stats", methods=['GET'], strict_slashes=False)
 def count():
     """
     View function that returns count of all objects by type
     """
     return jsonify({
-        "amenities": models.storage.count(Amenity),
-        "cities": models.storage.count(City),
-        "places": models.storage.count(Place),
-        "reviews": models.storage.count(Review),
-        "states": models.storage.count(State),
-        "users": models.storage.count(User)
+        "amenities": storage.count(Amenity),
+        "cities": storage.count(City),
+        "places": storage.count(Place),
+        "reviews": storage.count(Review),
+        "states": storage.count(State),
+        "users": storage.count(User)
     })
