@@ -74,7 +74,7 @@ class FileStorage:
         return object based on cls name and id or None if found
         """
         self.reload()
-        key = "{}.{}".format(cls, id)
+        key = "{}.{}".format(cls.__name__, id)
         return (FileStorage.__objects.get(key))
 
     def count(self, cls=None):
